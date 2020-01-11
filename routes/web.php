@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function()
 {
 Route::get('/products', 'ProductController@index')->name('index');
-Route::get('/suppliers', 'SupplierController@index')->name('index');
+Route::get('/suppliers', 'SupplierController@index')->name('suppliers');
 
 Route::resource('products', 'ProductController');
 Route::resource('suppliers','SupplierController');

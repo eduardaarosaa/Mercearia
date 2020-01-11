@@ -28,7 +28,7 @@
                             <td>{{$row->name}}</td>
                             <td>{{$row->quant}}</td>
                             <td>{{$row->supplier_id}}</td>
-                            <td>{{$row->image}}</td>
+                            <td><img src="{{url('storage/products/'.$row->image)}}" width="100px"></td>
                             
                         </tr>
                         @endforeach

@@ -57,14 +57,15 @@ class SupplierController extends Controller
 
         $insert = $this->supplier->create($dataForm);
 
-        if($insert == true){
-
-            echo "Ok";
-        }else{
-
-            echo "Error";
+        if (!empty($insert)) {
+            toastr()->success('Fornecedor criando com sucesso!');
+            return redirect()->back();
+        } else {
+            toastr()->error('Erro ao cadastrar um fornecedor');
+            return redirect()->back();
         }
-        $this->validate( $request, $rules, $request->messages());
+
+       // $this->validate( $request, $rules, $request->messages());
     }
 
     /**

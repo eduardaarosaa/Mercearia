@@ -27,7 +27,7 @@ class StoreProduct extends FormRequest
             'name' => 'required|min:3|max:100',
             'quant'=> 'required',
             'supplier_id'=>'required',
-            'image'=>'required'
+            'image'=>'image|required'
         ];
     }
 

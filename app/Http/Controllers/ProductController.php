@@ -34,7 +34,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-         $suppliers = Supplier::all();
+
+        $suppliers = Supplier::all();
+
+
         return view('painel/addProducts',compact('suppliers'));
     }
 
@@ -46,9 +49,34 @@ class ProductController extends Controller
      */
     public function store(StoreProduct $request)
     {
+
+        $user = auth()->user();
+
          //Pegando os dados do form
 
         $dataForm = $request->except('_token');
+
+        $dataForm['image'] = $user->image;
+
+        if($request->hasfile('image') && $request->file('image')->isValid()){
+
+            $name = $user->id.kebab_case($user->name);
+
+            $extension = $request->image->extension();
+
+            $nameFile = "{$name}.{$extension}";
+
+            $upload = $request->image->storeAs('products', $nameFile);
+
+            $dataForm['image'] = $nameFile;
+
+            if(!$upload){
+                return redirect()
+                        ->back()
+                        ->with('error', 'Falha ao fazer o upload');
+            }
+
+        }
 
 
         //Criando o cadastro

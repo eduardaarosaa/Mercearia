@@ -4,8 +4,49 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aaf8d4f68dfc165aaac9a7f99ef5e67c",
+    "content-hash": "d69d81e26841262ceb467bf927f5a950",
     "packages": [
+        {
+            "name": "brunocouty/busca-via-cep",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/brunocouty/busca-via-cep.git",
+                "reference": "d272fcbbe02664b97b6690140482ac95c56476dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/brunocouty/busca-via-cep/zipball/d272fcbbe02664b97b6690140482ac95c56476dd",
+                "reference": "d272fcbbe02664b97b6690140482ac95c56476dd",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "illuminate/contracts": "~5.1",
+                "illuminate/database": "~5.1",
+                "illuminate/http": "~5.1",
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "BrunoCouty\\BuscaViaCep\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bruno Couty",
+                    "email": "brunocouty@gmail.com"
+                }
+            ],
+            "description": "Encontre os dados de um endereço a partir do CEP!",
+            "time": "2017-06-06T20:00:55+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "v0.1.1",
