@@ -14,11 +14,43 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card" style="width: 12rem;">
+                                <div class="card-body" align="center">
+                                    <span>
+                                        <a href="{{url('admin/products')}}"><i class="fas fa-box"></i>
+                                    </span>
+                                    <h5 class="card-title">Produtos</h5></a>
+                                </div>
+                            </div>
 
-                    <a href="{{route('products.create')}}">Adicionar produto</a>
-                    <br>
-                    <a href="{{route('suppliers.create')}}">Adicionar forncedor</a>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card" style="width: 12rem;">
+                                <div class="card-body" align="center">
+                                    <span>
+                                        <a href="{{url('admin/suppliers')}}"><i class="fas fa-truck"></i>
+                                    </span>
+                                    <h5 class="card-title">Fornecedores</h5></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card" style="width: 12rem;">
+                                <div class="card-body" align="center">
+                                    <span>
+                                        <a href=""><i class="fas fa-tv"></i>
+                                    </span>
+
+                                    <h5 class="card-title">Monitoramento Estoque</h5></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,18 +13,18 @@
                     </div>
                 @endif
             <div class="card">
-                <div class="card-header">Adicionar um produto ao estoque</div>
+                <div class="card-header">Atualizando um produto</div>
 
                 <div class="card-body">
-                    <form action="{{route('products.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('updateProduct', $products->id)}}" method="POST" enctype="multipart/form-data">
                     	@csrf
                     	<div class="form-group">
 						    <label>Nome do produto:</label>
-						    <input type="text" class="form-control" name="name" placeholder="Digite o nome do produto" value="{{old('name')}}">
+						    <input type="text" class="form-control" name="name" placeholder="Digite o nome do produto" value="{{$products->name}}">
 						  </div>
 						  <div class="form-group">
 						    <label>Quantidade do produto:</label>
-						    <input type="text" class="form-control" name="quant" placeholder="Digite a quantidade do produto" value="{{old('quant')}}">
+						    <input type="text" class="form-control" name="quant" placeholder="Digite a quantidade do produto" value="{{$products->quant}}">
 						  </div>
 
                           <select name="supplier_id" class="form-control form-control-lg">
@@ -32,12 +32,16 @@
                             <option value="{{$row->id}}">{{$row->name}}</option>
                              @endforeach
                           </select>
+                          <br>
+                          <div class="form-group">
+                            <img src="{{url('storage/products/'.$products->image)}}" width="100px">
+                          </div>
 						  <div class="form-group">
 						    <label>Adicione uma image ao produto:</label>
-						    <input type="file" value="{{old('image')}}" name="image" class="form-control">
+						    <input type="file" name="image" value="{{url('storage/products/'.$products->image)}}" class="form-control">
 						  </div>
-						  <button type="submit" class="btn btn-primary">Cadastrar</button>
-                         
+						  <button type="submit" class="btn btn-primary">Atualizar</button>
+
                     </form>
 
                 </div>

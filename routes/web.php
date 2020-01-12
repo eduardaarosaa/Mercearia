@@ -21,8 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function()
 {
-Route::get('/products', 'ProductController@index')->name('index');
+Route::get('/products', 'ProductController@index')->name('products');
 Route::get('/suppliers', 'SupplierController@index')->name('suppliers');
+
+Route::post('/updateSupplier/{id}', 'SupplierController@update')->name('updateSupplier');
+Route::post('/updateProduct/{id}', 'ProductController@update')->name('updateProduct');
+Route::delete('/delete/{id}', 'SupplierController@destroy')->name('deleteProduct');
 
 Route::resource('products', 'ProductController');
 Route::resource('suppliers','SupplierController');

@@ -30,6 +30,10 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('css/stylesheet.css')}}" rel="stylesheet">
 
+    <!--Icons-->
+    <!-- Icones -->
+    <script src="https://kit.fontawesome.com/46935bd70e.js" crossorigin="anonymous"></script>
+
 
 </head>
 <body>
@@ -39,9 +43,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Mercearia do João
                 </a>
-                 <a class="nav-link" href="#">Produtos</a>
-                 <a class="nav-link" href="#">Fornecedores</a>
-                 <a class="nav-link" href="#">Monitoramento do Estoque</a>
+                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

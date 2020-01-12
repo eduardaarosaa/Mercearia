@@ -60,11 +60,13 @@ class ProductController extends Controller
 
         if($request->hasfile('image') && $request->file('image')->isValid()){
 
+            $rand =  rand();
+
             $name = $user->id.kebab_case($user->name);
 
             $extension = $request->image->extension();
 
-            $nameFile = "{$name}.{$extension}";
+            $nameFile = "{$name}.{$rand}.{$extension}";
 
             $upload = $request->image->storeAs('products', $nameFile);
 
@@ -113,7 +115,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $suppliers = Supplier::all();
+        $products =  Product::find($id);
+        return view('painel/updateProduct',compact('products','suppliers'));
     }
 
     /**
@@ -124,8 +128,49 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {
-        //
+
+        $user = auth()->user();
+        $products = Product::findOrFail($id);
+        $products->name = $request->name;
+        $products->quant = $request->quant;
+        $products->supplier_id = $request->supplier_id;
+
+        $dataForm['image'] = $user->image;
+
+        if($request->hasfile('image') && $request->file('image')->isValid()){
+
+            $rand = rand();
+
+            $name = $user->id.kebab_case($user->name);
+
+            $extension = $request->image->extension();
+
+            $nameFile = "{$name}.{$rand}.{$extension}";
+
+            $upload = $request->image->storeAs('products', $nameFile);
+
+            $dataForm['image'] = $nameFile;
+
+            if(!$upload){
+                return redirect()
+                        ->back()
+                        ->with('error', 'Falha ao fazer o upload');
+                    }
+                }
+       
+
+        $products->save();
+
+
+        if (!empty($products)) {
+            toastr()->success('Produto alterado com sucesso!');
+            return redirect()->back();
+        } else {
+            toastr()->error('Erro ao alterar um produto!');
+            return redirect()->back();
+        }
     }
 
     /**

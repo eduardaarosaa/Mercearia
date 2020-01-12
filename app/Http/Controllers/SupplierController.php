@@ -57,6 +57,7 @@ class SupplierController extends Controller
 
         $insert = $this->supplier->create($dataForm);
 
+        //verifica se o cadastro foi criado e retorna uma resposta ao usuário.
         if (!empty($insert)) {
             toastr()->success('Fornecedor criando com sucesso!');
             return redirect()->back();
@@ -65,7 +66,7 @@ class SupplierController extends Controller
             return redirect()->back();
         }
 
-       // $this->validate( $request, $rules, $request->messages());
+       
     }
 
     /**
@@ -87,7 +88,8 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        $supplier =  Supplier::find($id);
+        return view('painel/updateSupplier',compact('supplier'));
     }
 
     /**
@@ -99,7 +101,26 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $supplier = Supplier::findOrFail($id);
+        $supplier->name = $request->name;
+        $supplier->cep = $request->cep;
+        $supplier->address = $request->address;
+        $supplier->number = $request->number;
+        $supplier->neighborhood = $request->neighborhood;
+        $supplier->city = $request->city;
+        $supplier->state = $request->state;
+        $supplier->phone = $request->phone;
+
+        $supplier->save();
+
+
+        if (!empty($supplier)) {
+            toastr()->success('Fornecedor alterado com sucesso!');
+            return redirect()->back();
+        } else {
+            toastr()->error('Erro ao alterar um fornecedor!');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -110,6 +131,6 @@ class SupplierController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
     }
 }

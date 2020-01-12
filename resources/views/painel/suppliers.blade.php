@@ -15,6 +15,7 @@
                     <thead>
                         <tr>
 
+                            <th scope="col">Código</th>
                             <th scope="col">Nome</th>
                             <th scope="col">CEP</th>
                             <th scope="col">Endereço</th>
@@ -23,12 +24,15 @@
                             <th scope="col">Cidade</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Telefone</th>
+                            <th scope="col">Adicionar</th>
+                            <th scope="col">Editar</th>
+                    
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($supplier as $row)
                         <tr>
-
+                            <td>{{$row->id}}</td>
                             <td>{{$row->name}}</td>
                             <td>{{$row->cep}}</td>
                             <td>{{$row->address}}</td>
@@ -37,19 +41,29 @@
                             <td>{{$row->city}}</td>
                             <td>{{$row->state}}</td>
                             <td>{{$row->phone}}</td>
+                            <td>
+                                <a href="{{route('suppliers.edit', $row->id)}}">
+                                <button type="" class="btn btn-success">Editar</button>
+                                </a>
+                                
+                            </td>
+
                             
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
                 {!! $supplier->links() !!}
-                <a href="{{route('home')}}">
-                    <input type="button" class="btn btn-success" value="Voltar">
-                </a>
+                
                     
             </div>
         </div>
+        <br>
+        <a href="{{route('home')}}">
+                    <input type="button" class="btn btn-success" value="Voltar">
+                </a>
     </div>
+
 </div>
 
 
