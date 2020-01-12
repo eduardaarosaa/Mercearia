@@ -7,7 +7,7 @@
         <div class="col-md-8">
            
             <div class="card">
-                <div class="card-header">Lista de fornecedores</div>
+                <div class="card-header">Lista de produtos que estão ficando em falta</div>
 
                 <div class="card-body">
 
@@ -29,20 +29,24 @@
                             <td>{{$row->name}}</td>
                             <td>{{$row->quant}}</td>
                             <td>{{$row->supplier_id}}</td>
-                            <td>{{$row->image}}</td>
+                            <td><img src="{{url('storage/products/'.$row->image)}}" width="100px"></td>
                            
                             
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {!! $select->links() !!}
-                <a href="{{route('home')}}">
-                    <input type="button" class="btn btn-success" value="Voltar">
+              
+                <a href="{{route('exportProducts')}}">
+                    <input type="button" class="btn btn-success" value="Exportar dados">
                 </a>
                     
             </div>
         </div>
+        <br>
+         <a href="{{route('home')}}">
+                    <input type="button" class="btn btn-success" value="Voltar">
+                </a>
     </div>
 </div>
 

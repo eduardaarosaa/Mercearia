@@ -6,6 +6,8 @@ use App\Product;
 use App\Supplier;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProduct;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -186,8 +188,15 @@ class ProductController extends Controller
 
     public function StockMonitoring(){
 
+    $select = Product::where('quant', '<=','3')->get();
+
+    return view('painel/monitoring', compact('select'));
 
 
+    }
 
+     public function export() 
+    {
+        return Excel::download(new ProductsExport, 'products.xlsx');
     }
 }

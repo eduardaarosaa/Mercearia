@@ -42,7 +42,7 @@
                             <div class="card" style="width: 12rem;">
                                 <div class="card-body" align="center">
                                     <span>
-                                        <a href=""><i class="fas fa-tv"></i>
+                                        <a href="{{url('admin/monitoring')}}"><i class="fas fa-tv"></i>
                                     </span>
 
                                     <h5 class="card-title">Monitoramento Estoque</h5></a>

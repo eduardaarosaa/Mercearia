@@ -9,6 +9,19 @@
             <div class="card">
                 <div class="card-header">Lista de fornecedores</div>
 
+                <div class="row">
+                
+
+                    <div class='col-md-12'>
+                        <br>
+                        <a href="{{route('suppliers.create')}}">
+                                <button type="" class="btn btn-success add">Adicionar</button>
+                                </a>
+
+                    </div>
+
+                </div>
+
                 <div class="card-body">
 
                      <table class="table">
@@ -24,7 +37,6 @@
                             <th scope="col">Cidade</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Telefone</th>
-                            <th scope="col">Adicionar</th>
                             <th scope="col">Editar</th>
                     
                         </tr>

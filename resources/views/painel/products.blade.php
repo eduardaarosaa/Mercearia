@@ -9,6 +9,16 @@
             <div class="card">
                 <div class="card-header">Lista de produtos</div>
 
+                <div class="row">
+                    <div class="col-md-12">
+                        <br>
+                        <a href="{{route('products.create')}}">
+                                <button type="" class="btn btn-success add">Adicionar</button>
+                                </a>
+                    </div>
+
+                </div>    
+
                 <div class="card-body">
 
                      <table class="table">
@@ -19,7 +29,6 @@
                             <th scope="col">Quantidade</th>
                             <th scope="col">Fornecedor</th>
                             <th scope="col">Imagem</th>
-                            <th scope="col">Adicionar</th>
                             <th scope="col">Editar</th>
                         </tr>
                     </thead>
@@ -31,11 +40,7 @@
                             <td>{{$row->quant}}</td>
                             <td>{{$row->supplier_id}}</td>
                             <td><img src="{{url('storage/products/'.$row->image)}}" width="100px"></td>
-                            <td>
-                                <a href="{{route('products.create')}}">
-                                <button type="" class="btn btn-success">Adicionar</button>
-                                </a>
-                            </td>
+                           
                             <td>
                                 <a href="{{route('products.edit', $row->id)}}">
                                 <button type="" class="btn btn-success">Editar</button>

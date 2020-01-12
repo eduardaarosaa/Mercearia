@@ -28,7 +28,13 @@ Route::post('/updateSupplier/{id}', 'SupplierController@update')->name('updateSu
 Route::post('/updateProduct/{id}', 'ProductController@update')->name('updateProduct');
 Route::delete('/delete/{id}', 'SupplierController@destroy')->name('deleteProduct');
 
+Route::get('/monitoring', 'ProductController@StockMonitoring')->name('StockMonitoring');
+
 Route::resource('products', 'ProductController');
 Route::resource('suppliers','SupplierController');
 
+
+
 });
+
+Route::get('products/export/', 'ProductController@export')->name('exportProducts');
