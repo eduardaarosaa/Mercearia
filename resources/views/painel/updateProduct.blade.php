@@ -29,7 +29,9 @@
 
                           <select name="supplier_id" class="form-control form-control-lg">
                              @foreach($suppliers as $row)
-                            <option value="{{$row->id}}">{{$row->name}}</option>
+                            <option value="{{$row->id}}" 
+                                {{$products->supplier_id ? 'selected' : '' }}
+                              >{{$row->name}}</option>
                              @endforeach
                           </select>
                           <br>
@@ -38,17 +40,23 @@
                           </div>
 						  <div class="form-group">
 						    <label>Adicione uma image ao produto:</label>
-						    <input type="file" name="image" value="{{url('storage/products/'.$products->image)}}" class="form-control">
+						    <input type="file" name="image" class="form-control">
 						  </div>
+
+                        
 						  <button type="submit" class="btn btn-primary">Atualizar</button>
 
                     </form>
 
                 </div>
             </div>
+            <br>
+
+            <a href="{{route('home')}}">
+              <input type="button" class="btn btn-success" value="Voltar">
+          </a>
         </div>
     </div>
 </div>
-
 
 @endsection

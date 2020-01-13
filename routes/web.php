@@ -33,6 +33,8 @@ Route::get('/monitoring', 'ProductController@StockMonitoring')->name('StockMonit
 Route::resource('products', 'ProductController');
 Route::resource('suppliers','SupplierController');
 
+Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
+
 
 
 });

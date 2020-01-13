@@ -138,7 +138,7 @@ class ProductController extends Controller
         $products->name = $request->name;
         $products->quant = $request->quant;
         $products->supplier_id = $request->supplier_id;
-
+       
         $dataForm['image'] = $user->image;
 
         if($request->hasfile('image') && $request->file('image')->isValid()){
@@ -155,14 +155,24 @@ class ProductController extends Controller
 
             $dataForm['image'] = $nameFile;
 
+
+
             if(!$upload){
                 return redirect()
                         ->back()
                         ->with('error', 'Falha ao fazer o upload');
                     }
                 }
-       
 
+        if($dataForm['image'] == '' ){
+
+            $dataForm['image'] = $products->image;
+
+        }else{
+
+        $products->image = $nameFile;
+        }
+         
         $products->save();
 
 
@@ -199,4 +209,20 @@ class ProductController extends Controller
     {
         return Excel::download(new ProductsExport, 'products.xlsx');
     }
+
+      public function storeMedia(Request $request)
+    {
+        $path = storage_path('tmp/uploads');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+        $file = $request->file('file');
+        $name = uniqid() . '_' . trim($file->getClientOriginalName());
+        $file->move($path, $name);
+        return response()->json([
+            'name'          => $name,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
+    }
+
 }
