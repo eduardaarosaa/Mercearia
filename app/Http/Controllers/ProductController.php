@@ -25,7 +25,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $products = $this->product->paginate($this->totalPage);
+        // Lista todos os produtos 
+        $products = $this->product->paginate($this->totalPage);
         return view('painel/products', compact('products'));
     }
 
@@ -38,8 +39,6 @@ class ProductController extends Controller
     {
 
         $suppliers = Supplier::all();
-
-
         return view('painel/addProducts',compact('suppliers'));
     }
 
@@ -60,12 +59,15 @@ class ProductController extends Controller
 
         $dataForm['image'] = $user->image;
 
+        //verifica se foi enviado uma imagem 
         if($request->hasfile('image') && $request->file('image')->isValid()){
 
             $rand =  rand();
 
+            //cria um nome com o id e o nome do user 
             $name = $user->id.kebab_case($user->name);
 
+            //Pega a extensão
             $extension = $request->image->extension();
 
             $nameFile = "{$name}.{$rand}.{$extension}";
@@ -163,7 +165,7 @@ class ProductController extends Controller
                         ->with('error', 'Falha ao fazer o upload');
                     }
                 }
-
+        //Verifica se foi informado a imagem
         if($dataForm['image'] == '' ){
 
             $dataForm['image'] = $products->image;
@@ -173,6 +175,7 @@ class ProductController extends Controller
         $products->image = $nameFile;
         }
          
+        //Atualiza os dados
         $products->save();
 
 
@@ -198,6 +201,7 @@ class ProductController extends Controller
 
     public function StockMonitoring(){
 
+    //Retorna produtos com quant menor ou igual a 3
     $select = Product::where('quant', '<=','3')->get();
 
     return view('painel/monitoring', compact('select'));
@@ -207,11 +211,13 @@ class ProductController extends Controller
 
      public function export() 
     {
+        //Exportação excel com uso da lib - Excel Laravel 
         return Excel::download(new ProductsExport, 'products.xlsx');
     }
 
     public function searchProducts(Request $request){
 
+         //Retorna a busca de um produto 
          $products = Product::where('name', $request->name)->get();
 
          return view('painel/searchProducts', compact('products'));

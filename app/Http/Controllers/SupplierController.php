@@ -25,6 +25,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        //Lista todos os produtos
         $supplier = $this->supplier->paginate($this->totalPage);
         return view('painel/suppliers', compact('supplier'));   
     }
@@ -101,6 +102,7 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //Tras dos dados do form
         $supplier = Supplier::findOrFail($id);
         $supplier->name = $request->name;
         $supplier->cep = $request->cep;
@@ -111,9 +113,11 @@ class SupplierController extends Controller
         $supplier->state = $request->state;
         $supplier->phone = $request->phone;
 
+        //Atualiza dos dados
         $supplier->save();
 
 
+        //Verifica se a atualização foi realizada
         if (!empty($supplier)) {
             toastr()->success('Fornecedor alterado com sucesso!');
             return redirect()->back();
@@ -132,5 +136,12 @@ class SupplierController extends Controller
     public function destroy($id)
     {
        
+    }
+
+    public function searchSuppliers(Request $request){
+
+        $supplier = Supplier::where('name', $request->name)->get();
+
+         return view('painel/searchSuppliers', compact('supplier'));
     }
 }

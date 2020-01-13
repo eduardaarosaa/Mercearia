@@ -75,7 +75,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {!! $supplier->links() !!}
+                    
                     
                     
                 </div>

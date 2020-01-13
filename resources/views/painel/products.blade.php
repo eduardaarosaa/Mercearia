@@ -36,7 +36,7 @@
                             <th scope="col">Código</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Quantidade</th>
-                            <th scope="col">Fornecedor</th>
+                            <th scope="col">Cod.Fornecedor</th>
                             <th scope="col">Imagem</th>
                             <th scope="col">Editar</th>
                         </tr>

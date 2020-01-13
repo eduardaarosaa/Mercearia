@@ -25,10 +25,10 @@
           <label>Quantidade do produto:</label>
           <input type="text" class="form-control" name="quant" placeholder="Digite a quantidade do produto" value="{{$product->quant}}">
         </div>
-            
+           
         <select name="supplier_id" class="form-control form-control-lg">
           @foreach($suppliers as $supplier)
-         <option value="{{$supplier->id}}">{{$supplier->name}}</option>
+         <option value="{{$supplier->id}}" {{$product->supplier_id == $supplier->id ? "selected" : ""}}>{{$supplier->name}}</option>
          @endforeach
        </select>
        <br>
