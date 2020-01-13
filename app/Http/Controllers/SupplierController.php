@@ -140,6 +140,7 @@ class SupplierController extends Controller
 
     public function searchSuppliers(Request $request){
 
+        //Retorna 
         $supplier = Supplier::where('name', $request->name)->get();
 
          return view('painel/searchSuppliers', compact('supplier'));
