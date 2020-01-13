@@ -118,8 +118,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $suppliers = Supplier::all();
-        $products =  Product::find($id);
-        return view('painel/updateProduct',compact('products','suppliers'));
+        $product =  Product::find($id);
+        return view('painel/updateProduct',compact('product','suppliers'));
     }
 
     /**
@@ -210,19 +210,11 @@ class ProductController extends Controller
         return Excel::download(new ProductsExport, 'products.xlsx');
     }
 
-      public function storeMedia(Request $request)
-    {
-        $path = storage_path('tmp/uploads');
-        if (!file_exists($path)) {
-            mkdir($path, 0777, true);
-        }
-        $file = $request->file('file');
-        $name = uniqid() . '_' . trim($file->getClientOriginalName());
-        $file->move($path, $name);
-        return response()->json([
-            'name'          => $name,
-            'original_name' => $file->getClientOriginalName(),
-        ]);
+    public function searchProducts(Request $request){
+
+         $products = Product::where('name', $request->name)->get();
+
+         return view('painel/searchProducts', compact('products'));
     }
 
 }

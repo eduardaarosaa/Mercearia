@@ -84,6 +84,9 @@ i{
 	font-size:100px;
 	color:#ED2B5D;
 }
+select option{
+	font-size:10pt;
+}
 /*========== Sytle menu ============== */
 .navbar-laravel{
 

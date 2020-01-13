@@ -30,12 +30,10 @@ Route::delete('/delete/{id}', 'SupplierController@destroy')->name('deleteProduct
 
 Route::get('/monitoring', 'ProductController@StockMonitoring')->name('StockMonitoring');
 
+Route::post('/searchProducts', 'ProductController@searchProducts')->name('searchProducts');
+
 Route::resource('products', 'ProductController');
 Route::resource('suppliers','SupplierController');
-
-Route::post('products/media', 'ProductController@storeMedia')->name('products.storeMedia');
-
-
 
 });
 

@@ -60,12 +60,11 @@
                         @endforeach
                     </tbody>
                 </table>
-                {!! $products->links() !!}
+               
                 
-
+            </div>
             </div>
         </div>
-    </div>
         <br>
         <a href="{{route('home')}}">
             <input type="button" class="btn btn-success" value="Voltar">
